@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-function Movie({source}) {
+function Movie({source, id}) {
     return (
         <div className="frame">
-            <img className="imageMovie" src={source} />
+            <Link to={`/sessoes/${id}`}>
+                <img className="imageMovie" src={source} />
+            </Link>
         </div>
         
     )
@@ -33,7 +36,7 @@ export default function ChooseMovie () {
             </Select>
             <Catalog>
                 {
-                    movies.map(movie => <Movie source={movie.posterURL} />)
+                    movies.map(movie => <Movie source={movie.posterURL} id={movie.id} />)
                 }
             </Catalog>
         </>

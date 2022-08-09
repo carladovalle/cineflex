@@ -14,3 +14,17 @@
     width: 129px;
     height: 193px;
 }
+.session {
+    display: flex;
+    flex-direction: row;
+}
+.day {
+    color: #293845;
+    font-weight: 400;
+    font-size: 20px;
+}
+.times {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 23px;
+}

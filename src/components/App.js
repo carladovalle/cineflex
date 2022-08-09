@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from './Header';
 import ChooseMovie from './ChooseMovie';
-import ChooseSection from './ChooseSection';
+import ChooseSession from './ChooseSession';
 import Footer from './Footer';
 import ChooseSeats from './ChooseSeats';
 import Success from './Success';
@@ -14,6 +14,7 @@ export default function App () {
             <Header />
             <Routes>
                 <Route path="/" element={<ChooseMovie />} />
+                <Route path="/sessoes/:movieId" element={<ChooseSession />} />
             </Routes>
         </BrowserRouter>
     )
