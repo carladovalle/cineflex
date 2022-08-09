@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Header from './Header';
 import ChooseMovie from './ChooseMovie';
 import ChooseSection from './ChooseSection';
@@ -8,9 +10,11 @@ import Success from './Success';
 
 export default function App () {
     return (
-        <>
+        <BrowserRouter>
             <Header />
-            <ChooseMovie />
-        </>
+            <Routes>
+                <Route path="/" element={<ChooseMovie />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
