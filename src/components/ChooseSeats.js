@@ -1,27 +1,45 @@
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+function InformationSeats({name}) {
+    return (
+            <Seat>
+                { name }
+            </Seat>  
+    )
+}
+
 export default function ChooseSeats () {
+
+    const { seatId } = useParams();
+    const [seats, setSeats] = useState([]);
+
+    useEffect(() => {
+
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${seatId}/seats`);
+
+        promise.then(response => {
+            setSeats(response.data.seats);
+        });
+
+    })
+
     return (
         <>
             <Select>
                 Selecione o(s) assento(s)
             </Select>
             <Seats>
-                <Seat>
-                    1
-                </Seat>
-                <Seat>
-                    2
-                </Seat>
-                <Seat>
-                    3
-                </Seat>
-                <Seat>
-                    4
-                </Seat>
-                <Seat>
-                    5
-                </Seat>
+                {
+                    seats.map(info => 
+                        <InformationSeats 
+                            name = {info.name}
+                            id = {info.id}
+                        />
+                    )
+                }
             </Seats>
             <Status>
                 <OptionSelected>
@@ -73,6 +91,7 @@ const Seats = styled.div`
     align-items: center;
     width: 374px;
     height: 202px;
+    flex-wrap: wrap;
 `
 const Seat = styled.div`
     width: 26px;
@@ -84,6 +103,7 @@ const Seat = styled.div`
     justify-content: center;
     align-items: center;
     margin-right: 7px;
+    font-size: 11px;
 `
 const Status = styled.div`
     display: flex;

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -8,13 +9,15 @@ function InformationSessions({weekday, date, showtimes, key}) {
         <div className="session">
             <div className="day">
                 {weekday} - {date}
-                <div className="times">
-                    {
-                        showtimes.map(time => 
-                            <Time key={time.id}>{time.name}</Time>
-                        )
-                    }
-                </div>
+                    <div className="times">
+                        {
+                            showtimes.map(time => 
+                                <Link to={`/assentos/${time.id}`}>
+                                    <Time key={time.id}>{time.name}</Time>
+                                </Link>
+                            )
+                        }
+                    </div>
             </div>
         </div>
     )
@@ -74,6 +77,10 @@ const SessionsTimes = styled.div`
     flex-direction: column;
     margin-left: 24px;
     font-family: 'Roboto', sans-serif;
+
+    a {
+        text-decoration: none;
+    }
 `
 const Time = styled.div`
     width: 83px;
