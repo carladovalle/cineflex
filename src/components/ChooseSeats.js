@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-function InformationSeats({name}) {
+import Footer from './Footer';
+
+function InformationSeats({name, key}) {
     return (
             <Seat>
                 { name }
@@ -15,6 +17,9 @@ export default function ChooseSeats () {
 
     const { seatId } = useParams();
     const [seats, setSeats] = useState([]);
+    const [movieFooter, setMovieFooter] = useState([]);
+    const [dayFooter, setDayFooter] = useState([]);
+    const [timeFooter, setTimeFooter] = useState({});
 
     useEffect(() => {
 
@@ -22,9 +27,12 @@ export default function ChooseSeats () {
 
         promise.then(response => {
             setSeats(response.data.seats);
+            setMovieFooter(response.data.movie);
+            setDayFooter(response.data.day);
+            setTimeFooter(response.data)
         });
 
-    })
+    }, []);
 
     return (
         <>
@@ -37,6 +45,7 @@ export default function ChooseSeats () {
                         <InformationSeats 
                             name = {info.name}
                             id = {info.id}
+                            key = {info.id}
                         />
                     )
                 }
@@ -70,6 +79,17 @@ export default function ChooseSeats () {
             <ButtonReserve>
                 Reservar assento(s)
             </ButtonReserve>
+            <Footer>
+                    <div className="frameFooter">
+                            <img className="imageMovieFooter" src= {movieFooter.posterURL} />
+                    </div>
+                    <div className="infoMovieFooter">
+                        {movieFooter.title}
+                        <div className="detailsInfo">
+                            {dayFooter.weekday} - {timeFooter.name}
+                        </div>
+                    </div>
+            </Footer>
         </>
     )
 }

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export default function Footer () {
+export default function Footer (props) {
     return (
         <FooterScreen>
-            nome do filme
+            {props.children}
         </FooterScreen>
     )
 }
@@ -13,8 +13,10 @@ const FooterScreen = styled.div`
     height: 117px;
     background-color: #DFE6ED;
     display: flex;
-    justify-content: center;
     align-items: center;
     font-family: 'Roboto', sans-serif;
     font-size: 26px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 `

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import Footer from './Footer';
+
 function InformationSessions({weekday, date, showtimes, key}) {
     return (
         <div className="session">
@@ -27,13 +29,15 @@ export default function ChooseSection () {
 
     const { movieId } = useParams();
     const [sessions, setSessions] = useState([]);
+    const [movieFooter, setMovieFooter] = useState({});
 
     useEffect(() => {
 
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
 
         promise.then(response => {
-            setSessions(response.data.days)
+            setSessions(response.data.days);
+            setMovieFooter(response.data);
         })
 
     }, [])
@@ -55,6 +59,14 @@ export default function ChooseSection () {
                             )
                     }
             </SessionsTimes>
+            <Footer>
+                    <div className="frameFooter">
+                            <img className="imageMovieFooter" src= {movieFooter.posterURL} />
+                    </div>
+                    <div className="nameMovieFooter">
+                        {movieFooter.title}
+                    </div>
+            </Footer>
         </>
     )
 }
