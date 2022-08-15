@@ -8,10 +8,10 @@ import Footer from './Footer';
 
 function InformationSessions({weekday, date, showtimes, key}) {
     return (
-        <div className="session">
-            <div className="day">
+        <Session>
+            <Day>
                 {weekday} - {date}
-                    <div className="times">
+                    <Times>
                         {
                             showtimes.map(time => 
                                 <Link to={`/assentos/${time.id}`}>
@@ -19,9 +19,9 @@ function InformationSessions({weekday, date, showtimes, key}) {
                                 </Link>
                             )
                         }
-                    </div>
-            </div>
-        </div>
+                    </Times>
+            </Day>
+        </Session>
     )
 }
 
@@ -43,10 +43,8 @@ export default function ChooseSection () {
     }, [])
 
     return (
-        <>
-            <Select>
-                Selecione o horário
-            </Select>
+        <ScreenChooseSession>
+            <h1>Selecione o horário</h1>
             <SessionsTimes>
                     {
                         sessions.map(info => 
@@ -60,31 +58,35 @@ export default function ChooseSection () {
                     }
             </SessionsTimes>
             <Footer>
-                    <div className="frameFooter">
-                            <img className="imageMovieFooter" src= {movieFooter.posterURL} />
-                    </div>
-                    <div className="nameMovieFooter">
+                    <Frame>
+                            <img src= {movieFooter.posterURL} />
+                    </Frame>
+                    <NameMovie>
                         {movieFooter.title}
-                    </div>
+                    </NameMovie>
             </Footer>
-        </>
+        </ScreenChooseSession>
     )
 }
 
-const Select = styled.div`
-    width: 374px;
-    height: 110px;
-    color: #293845;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const ScreenChooseSession = styled.div`
+    width: 375px;
+    height: 100%;
+    background-color: #FFFFFF;
+    margin-top: 67px;
     font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-weight: 400;
+
+    h1 {
+        font-size: 24px;
+        color: #293845;
+        margin-left: 100px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 `
 const SessionsTimes = styled.div`
     width: 374px;
-    height: 583px;
     display: flex;
     flex-direction: column;
     margin-left: 24px;
@@ -93,6 +95,20 @@ const SessionsTimes = styled.div`
     a {
         text-decoration: none;
     }
+`
+const Session = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+const Day = styled.div`
+    color: #293845;
+    font-weight: 400;
+    font-size: 20px;
+`
+const Times = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 23px;
 `
 const Time = styled.div`
     width: 83px;
@@ -105,4 +121,28 @@ const Time = styled.div`
     align-items: center;
     margin-top: 22px;
     margin-right: 8px;
+`
+const Frame = styled.div`
+    width: 64px;
+    height: 89px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-bottom: 11px;
+
+    img {
+        width: 48px;
+        height: 72px;
+    }
+`
+const NameMovie = styled.div`
+    color: #293845;
+    font-size: 26px;
+    margin-left: 14px;
+    display: flex;
+    flex-direction: column;
 `

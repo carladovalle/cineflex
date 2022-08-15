@@ -5,11 +5,11 @@ import styled from 'styled-components';
 
 function Movie({source, id}) {
     return (
-        <div className="frame">
+        <Frame>
             <Link to={`/sessoes/${id}`}>
-                <img className="imageMovie" src={source} />
+                <img src={source} />
             </Link>
-        </div>
+        </Frame>
         
     )
 }
@@ -30,39 +30,55 @@ export default function ChooseMovie () {
     },[]);
 
     return (
-        <>
-            <Select>
-                Selecione o filme
-            </Select>
-            <Catalog>
-                {
-                    movies.map(movie => <Movie source={movie.posterURL} id={movie.id} />)
-                }
-            </Catalog>
-        </>
+            <ScreenChooseMovie>
+                    <h1>Selecione o filme</h1>
+                <Catalog>
+                    {
+                        movies.map(movie => <Movie source={movie.posterURL} id={movie.id} />)
+                    }
+                </Catalog>
+            </ScreenChooseMovie>
 
         
     )
 }
 
-const Select = styled.div`
-    width: 374px;
-    height: 110px;
-    color: #293845;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const ScreenChooseMovie = styled.div`
+    width: 375px;
+    height: 100%;
+    background-color: #FFFFFF;
+    margin-top: 67px;
     font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-weight: 400;
+
+    h1 {
+        font-size: 24px;
+        color: #293845;
+        margin-left: 100px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 `
 const Catalog = styled.div`
     width: 374px;
     height: 700px;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
+`
+const Frame = styled.div`
+    width: 145px;
+    height: 209px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: scroll;
+    margin-left: 30px;
+    margin-bottom: 11px;
+
+    img {
+        width: 129px;
+        height: 193px;
+    }
 `

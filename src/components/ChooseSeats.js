@@ -7,11 +7,11 @@ import Footer from './Footer';
 
 function InformationSeats({number, key, availability}) {
 
-    const [selecionado, setSelecionado] = useState(false);
+    const [selected, setSelected] = useState(false);
 
     let color, border;
 
-    if (selecionado == false) {
+    if (selected == false) {
         color = availability ? "#C3CFD9" : "#FBE192";
         border = availability ? "#808F9D" : "#F7C52B";
     } else {
@@ -21,10 +21,10 @@ function InformationSeats({number, key, availability}) {
 
     return (
             <Seat color={color} border={border} onClick={() => {
-                if (selecionado == false && availability == true) {
-                    setSelecionado(true);
+                if (selected == false && availability == true) {
+                    setSelected(true);
                 } else if (availability == true) {
-                    setSelecionado(false);
+                    setSelected(false);
                 }
             }}>
                 { number }
@@ -54,10 +54,8 @@ export default function ChooseSeats () {
     }, []);
 
     return (
-        <>
-            <Select>
-                Selecione o(s) assento(s)
-            </Select>
+        <ScreenChooseSeat>
+            <h1>Selecione o(s) assento(s)</h1>
             <Seats>
                 {
                     seats.map(info => 
@@ -84,46 +82,43 @@ export default function ChooseSeats () {
                     Indisponível
                 </OptionUnavailable>
             </Status>
-            <Form>
-                <TitleInput>
-                    Nome do comprador
-                </TitleInput>
-                <Input>
-                </Input>
-                <TitleInput>
-                    CPF do comprador
-                </TitleInput>
-                <Input>
-                </Input>
-            </Form>
-            <ButtonReserve>
-                Reservar assento(s)
-            </ButtonReserve>
+            <form>
+                <Label>Nome do comprador</Label>
+                <Input />
+                <Label>CPF do comprador</Label>
+                <Input />
+                <ButtonReserve>Reservar assento(s)</ButtonReserve>
+            </form>
             <Footer>
-                    <div className="frameFooter">
-                            <img className="imageMovieFooter" src= {movieFooter.posterURL} />
-                    </div>
-                    <div className="infoMovieFooter">
+                    <Frame>
+                            <img src= {movieFooter.posterURL} />
+                    </Frame>
+                    <InfoMovie>
                         {movieFooter.title}
-                        <div className="detailsInfo">
+                        <DetailsInfo>
                             {dayFooter.weekday} - {timeFooter.name}
-                        </div>
-                    </div>
+                        </DetailsInfo>
+                    </InfoMovie>
             </Footer>
-        </>
+        </ScreenChooseSeat>
     )
 }
 
-const Select = styled.div`
-    width: 374px;
-    height: 110px;
-    color: #293845;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const ScreenChooseSeat = styled.div`
+    width: 375px;
+    height: 800px;
+    background-color: #FFFFFF;
+    margin-top: 67px;
     font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-weight: 400;
+
+    h1 {
+        font-size: 24px;
+        color: #293845;
+        margin-left: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 `
 const Seats = styled.div`
     display: flex;
@@ -156,6 +151,7 @@ const Status = styled.div`
     width: 374px;
     height: 54px;
     margin-top: 16px;
+    margin-bottom: 42px;
 `
 const OptionSelected = styled.div`
     display: flex;
@@ -205,12 +201,7 @@ const SeatUnavailable = styled.div`
     border: 1px solid #F7C52B;
     margin-bottom: 5px;
 `
-const Form = styled.div`
-    width: 374px;
-    height: 161px;
-    margin-top: 66px;
-`
-const TitleInput = styled.div`
+const Label = styled.div`
     color: #293845;
     font-size: 18px;
     margin-left: 24px;
@@ -237,4 +228,30 @@ const ButtonReserve = styled.button`
     margin-left: 72px;
     margin-top: 57px;
     margin-bottom: 30px;
+`
+const Frame = styled.div`
+    width: 64px;
+    height: 89px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-bottom: 11px;
+
+    img {
+        width: 48px;
+        height: 72px;
+    }
+`
+const InfoMovie = styled.div`
+    color: #293845;
+    font-size: 26px;
+    margin-left: 14px;
+    display: flex;
+    flex-direction: column;
+`
+const DetailsInfo = styled.div`
 `

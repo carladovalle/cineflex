@@ -19,4 +19,8 @@ const HeaderScreen = styled.div`
     font-size: 34px;
     font-weight: 400;
     font-family: 'Roboto', sans-serif;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    bottom: 0;
 `
