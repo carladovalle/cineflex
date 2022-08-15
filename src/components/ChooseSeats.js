@@ -5,10 +5,29 @@ import styled from 'styled-components';
 
 import Footer from './Footer';
 
-function InformationSeats({name, key}) {
+function InformationSeats({number, key, availability}) {
+
+    const [selecionado, setSelecionado] = useState(false);
+
+    let color, border;
+
+    if (selecionado == false) {
+        color = availability ? "#C3CFD9" : "#FBE192";
+        border = availability ? "#808F9D" : "#F7C52B";
+    } else {
+        color = "#8DD7CF";
+        border = "#45BDB0";
+    }
+
     return (
-            <Seat>
-                { name }
+            <Seat color={color} border={border} onClick={() => {
+                if (selecionado == false && availability == true) {
+                    setSelecionado(true);
+                } else if (availability == true) {
+                    setSelecionado(false);
+                }
+            }}>
+                { number }
             </Seat>  
     )
 }
@@ -29,7 +48,7 @@ export default function ChooseSeats () {
             setSeats(response.data.seats);
             setMovieFooter(response.data.movie);
             setDayFooter(response.data.day);
-            setTimeFooter(response.data)
+            setTimeFooter(response.data);
         });
 
     }, []);
@@ -43,9 +62,10 @@ export default function ChooseSeats () {
                 {
                     seats.map(info => 
                         <InformationSeats 
-                            name = {info.name}
+                            number = {info.name}
                             id = {info.id}
                             key = {info.id}
+                            availability = {info.isAvailable}
                         />
                     )
                 }
@@ -116,14 +136,18 @@ const Seats = styled.div`
 const Seat = styled.div`
     width: 26px;
     height: 26px;
-    background-color: #C3CFD9;
+    background-color: ${props => props.color};
     border-radius: 12px;
-    border: 1px solid #808F9D;
+    border: 1px solid ${props => props.border};
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 7px;
     font-size: 11px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 const Status = styled.div`
     display: flex;
