@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import Footer from './Footer';
 
-function InformationSeats({number, key, availability}) {
+function InformationSeats({id, number, key, availability, armchairs, setArmchairs, idArmchairs, setidArmchairs}) {
 
     const [selected, setSelected] = useState(false);
 
@@ -23,8 +23,14 @@ function InformationSeats({number, key, availability}) {
             <Seat color={color} border={border} onClick={() => {
                 if (selected == false && availability == true) {
                     setSelected(true);
+                    setArmchairs([...armchairs, number])
+                    setidArmchairs([...idArmchairs, id])
                 } else if (availability == true) {
                     setSelected(false);
+                    const novo = armchairs.filter((assento)=> assento!== number? true: false)
+                    const novoId = idArmchairs.filter((assento)=> assento!== id? true: false)
+                    setArmchairs(novo)
+                    setidArmchairs(novoId)    
                 }
             }}>
                 { number }
@@ -39,6 +45,12 @@ export default function ChooseSeats () {
     const [movieFooter, setMovieFooter] = useState([]);
     const [dayFooter, setDayFooter] = useState([]);
     const [timeFooter, setTimeFooter] = useState({});
+    const [name, setName] = useState("");
+    const [cpf, setCpf] = useState("");
+    const [armchairs, setArmchairs] = useState([]);
+    const [idArmchairs, setidArmchairs] = useState([])
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -48,11 +60,41 @@ export default function ChooseSeats () {
             setSeats(response.data.seats);
             setMovieFooter(response.data.movie);
             setDayFooter(response.data.day);
-            setTimeFooter(response.data);
+            setTimeFooter(response.data); 
         });
 
     }, []);
 
+    function reserve() {
+
+            const numberSeat = [];
+            const idSeat = [];
+            seats.filter(num => num.isAvailable === 'selecionado')
+                .map(num => {
+                    idSeat.push(num.id)
+                    numberSeat.push(num.name)
+                })
+
+            const customerData = {
+                name,
+                cpf,
+                ids: idSeat
+            }
+
+            const sendSuccessScreen = {
+                cpf, 
+                name, 
+                numberSeat,
+                title: movieFooter.title,
+                day: dayFooter.weekday,
+                time: timeFooter.name,
+            }
+
+            const promise = axios.post(`https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many`, customerData);
+            promise.then(navigate("/sucesso", {state: sendSuccessScreen}))
+    
+    }
+    
     return (
         <ScreenChooseSeat>
             <h1>Selecione o(s) assento(s)</h1>
@@ -64,6 +106,10 @@ export default function ChooseSeats () {
                             id = {info.id}
                             key = {info.id}
                             availability = {info.isAvailable}
+                            armchairs = {armchairs} 
+                            setArmchairs = {setArmchairs} 
+                            idArmchairs = {idArmchairs} 
+                            setidArmchairs = {setidArmchairs}
                         />
                     )
                 }
@@ -84,10 +130,10 @@ export default function ChooseSeats () {
             </Status>
             <form>
                 <Label>Nome do comprador</Label>
-                <Input />
+                <Input type="text" placeholder="Digite seu nome..." value={name} onChange={(e) => setName(e.target.value)} required />
                 <Label>CPF do comprador</Label>
-                <Input />
-                <ButtonReserve>Reservar assento(s)</ButtonReserve>
+                <Input type="text" placeholder="Digite seu CPF..." value={cpf} onChange={(e) => setCpf(e.target.value)} required />
+                <ButtonReserve onClick={reserve}>Reservar assento(s)</ButtonReserve>
             </form>
             <Footer>
                     <Frame>
@@ -213,6 +259,12 @@ const Input = styled.input`
     height: 51px;
     border: 1px solid #D4D4D4;
     margin-left: 24px;
+
+    &::placeholder {
+        color: #AFAFAF;
+        font-size: 18px;
+        font-style: italic;
+    }
 `
 const ButtonReserve = styled.button`
     width: 225px;
@@ -228,6 +280,14 @@ const ButtonReserve = styled.button`
     margin-left: 72px;
     margin-top: 57px;
     margin-bottom: 30px;
+
+    a {
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+    &:hover {
+        cursor: pointer;
+    }
 `
 const Frame = styled.div`
     width: 64px;

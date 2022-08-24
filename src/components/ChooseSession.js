@@ -71,7 +71,7 @@ export default function ChooseSection () {
 
 const ScreenChooseSession = styled.div`
     width: 375px;
-    height: 100%;
+    height: 786px;
     background-color: #FFFFFF;
     margin-top: 67px;
     font-family: 'Roboto', sans-serif;

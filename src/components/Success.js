@@ -1,64 +1,55 @@
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export default function Success () {
+
+    const { state } = useLocation();
+
     return (
-        <>
-            <Select>
-                Pedido feito com sucesso!
-            </Select>
-            <SuccessScreen>
+        <ScreenSuccess>
+            <h1>Pedido feito com sucesso!</h1>
                 <Information>
-                    <Title>
-                        Filme e sessão
-                    </Title>
-                    <Description>
-                        Enola Holmes
-                        24/06/2021 15:00
-                    </Description>
+                    <h2>Filme e sessão</h2>
+                    <h3>
+                        {state.title}
+                        <br></br>
+                        {state.day} {state.time}
+                    </h3>
                 </Information>
                 <Information>
-                    <Title>
-                        Ingressos
-                    </Title>
-                    <Description>
-                        Assento 15
-                        Assento 16
-                    </Description>
-                </Information>
-                <Information>
-                    <Title>
-                        Comprador
-                    </Title>
-                    <Description>
-                        Nome: João da Silva Sauro
-                        CPF: 123.456.789-10
-                    </Description>
+                    <h2>Comprador</h2>
+                    <h3>
+                        Nome: {state.name}
+                        <br></br>
+                        CPF: {state.cpf}
+                    </h3>
                 </Information>
                 <BackButton>
-                    Voltar pra Home
+                    <Link to='/'>
+                        Voltar pra Home
+                    </Link>
                 </BackButton>
-            </SuccessScreen>
-        </>
+        </ScreenSuccess>
     )
 }
 
-const Select = styled.div`
-    width: 374px;
-    height: 89px;
-    color: #247A6B;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const ScreenSuccess = styled.div`
+    width: 375px;
+    height: 800px;
+    background-color: #FFFFFF;
+    margin-top: 67px;
     font-family: 'Roboto', sans-serif;
-    font-size: 24px;
-    text-align: center;
-`
-const SuccessScreen = styled.div`
-    width: 374px;
-    height: 651px;
-    display: flex;
-    flex-direction: column;
+    font-weight: 400;
+
+    h1 {
+        font-size: 24px;
+        color: #293845;
+        margin-left: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        color: #247A6B;
+    }
 `
 const Information = styled.div`
     color: #293845;
@@ -68,14 +59,16 @@ const Information = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 28px;
-`
-const Title = styled.div`
-    font-weight: 700;
-    margin-bottom: 7px;
-`
-const Description = styled.div`
-    display: flex;
-    flex-direction: column;
+
+    h2 {
+        font-weight: 700;
+        margin-bottom: 7px;
+        font-style: 24px;
+    }
+    h3 {
+        display: flex;
+        flex-direction: column;
+    }
 `
 const BackButton = styled.button`
     width: 225px;
@@ -91,4 +84,12 @@ const BackButton = styled.button`
     margin-left: 74px;
     margin-top: 62px;
     margin-bottom: 189px;
+
+    a {
+        text-decoration: none;
+        color: #FFFFFF;
+    }
+    &:hover {
+        cursor: pointer;
+    }
 `
