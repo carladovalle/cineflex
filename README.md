@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+<img src="https://user-images.githubusercontent.com/97575616/192447233-18f3bb87-d37d-4378-8363-d6d859fd64c9.png" width="100%" alt="banner">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📑 Conteúdo
 
-## Available Scripts
+-   [Descrição do Projeto](#-descricao-projeto)
+-   [Mockup](#-mockup)
+-   [Como rodar a aplicação](#%EF%B8%8F-how-to-run)
+-   [Tecnologias](#%EF%B8%8F-build-with)
+-   [Contato](#-contato)
 
-In the project directory, you can run:
+## 📌 Descrição do Projeto
 
-### `npm start`
+<p align="justify">Este é meu terceiro projeto com React. Consiste em um Single Page Application (SPA) utilizando o React Router. A ideia deste projeto é um aplicativo móvel de reserva de cinema, onde você pode facilmente comprar ingressos para novos filmes.</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📸 Mockup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<div  align="center" >
+<img src="https://user-images.githubusercontent.com/97575616/192391480-dcde48fa-3847-47c2-8c39-1f43a1926bd3.png" alt="mockup">
+</div>
 
-### `npm test`
+## ⚙️ Como rodar a aplicação
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone este repositório
+2. Instale as dependências
+```bash
+npm i
+```
+3. Rode o projeto
+```bash
+npm start
+```
+4. Você pode, opcionalmente, construir o projeto em execução
+```bash
+npm run build
+```
+5. Acesse http://localhost:3000 no seu navegar favorito
 
-### `npm run build`
+## 🛠️ Tecnologias
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![uses-react](https://img.shields.io/badge/React-20232A?style=plastic&logo=react&logoColor=61DAFB)
+![uses-node js](https://img.shields.io/badge/Node.js-43853D?style=plastic&logo=node.js&logoColor=white)
+[![uses-javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=plastic&logo=javascript&logoColor=black)](https://www.javascript.com)
+![uses-html5](https://img.shields.io/badge/HTML5-E34F26?style=plastic&logo=html5&logoColor=white)
+![uses-css](https://img.shields.io/badge/CSS3-1572B6?style=plastic&logo=css3&logoColor=white)
+![built-with-git](https://img.shields.io/badge/Git-E34F26?style=plastic&logo=git&logoColor=white)
+![built-with-vsc](https://img.shields.io/badge/Visual%20Studio%20Code-blue?style=plastic&logo=visualstudiocode)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Contato
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<div align="center">
+<img width= 200px src="https://avatars.githubusercontent.com/u/69774119?s=400&u=3e044818379a4a34965fed74a6df201694c5ec5f&v=4" alt=""/>
+  <p> <i><b>Carla Ferreira do Valle</i></b> </p>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br /> <a href = "mailto:carlafdovalle@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+  <a href="https://www.linkedin.com/in/carlafvalle/" target="_blank"><img height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" target="_blank"></a> 
+ 
+</div>
