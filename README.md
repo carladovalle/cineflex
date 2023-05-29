@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/97575616/192447233-18f3bb87-d37d-4378-8363-d6d859fd64c9.png" width="100%" alt="banner">
+# CineFlex
 
 ## 📑 Conteúdo
 
@@ -10,7 +10,14 @@
 
 ## 📌 Descrição do Projeto
 
-<p align="justify">Este é meu terceiro projeto com React. Consiste em um Single Page Application (SPA) utilizando o React Router. A ideia deste projeto é um aplicativo móvel de reserva de cinema, onde você pode facilmente comprar ingressos para novos filmes.</p>
+<p align="justify">Trata-se de uma aplicação web para dispositivos móveis com a qual os usuários podem se divertir escolhendo seu filme favorito. Abaixo estão as funcionalidades implementadas:
+
+- Listar todos os filmes
+- Selecionar seu filme favorito, a sessão de sua preferência e os seu(s) assento(s)
+- Inserir seu nome e número do documento
+- Revisar e obter o comprovante de sua compra
+
+Atenção: Este app é apenas uma simulação de um pedido no cinema. A compra não é real e não implica qualquer obrigação.</p>
 
 ## 📸 Mockup
 
